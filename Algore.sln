@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Algore", "Algore\Algore.csproj", "{73D41041-C893-48A0-AC36-C0C61E0A4537}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Algore.UnitTests", "Algore.UnitTests\Algore.UnitTests.csproj", "{55DC6B5D-FD00-4A82-8173-22725BAA914B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{73D41041-C893-48A0-AC36-C0C61E0A4537}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{73D41041-C893-48A0-AC36-C0C61E0A4537}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{73D41041-C893-48A0-AC36-C0C61E0A4537}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{73D41041-C893-48A0-AC36-C0C61E0A4537}.Release|Any CPU.Build.0 = Release|Any CPU
+		{55DC6B5D-FD00-4A82-8173-22725BAA914B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{55DC6B5D-FD00-4A82-8173-22725BAA914B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{55DC6B5D-FD00-4A82-8173-22725BAA914B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{55DC6B5D-FD00-4A82-8173-22725BAA914B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
