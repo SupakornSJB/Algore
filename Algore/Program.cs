@@ -8,8 +8,7 @@ var configs = new List<IntervalSchedulingTestConfiguration>
 {
     new() 
     {
-        // N = Enumerable.Range(10, 15).Select(Pow).ToArray(),
-        N = [10, 20, 30, 40],
+        N = Enumerable.Range(10, 15).Select(Pow).ToArray(),
         Alpha = [0.1m, 1, 5],
         Generators =
         [
@@ -18,15 +17,15 @@ var configs = new List<IntervalSchedulingTestConfiguration>
             IntervalScheduling.ShortestDuration,
         ],
     },
-    // new()
-    // {
-    //     N = [5,10,15,20],
-    //     Alpha = [0.1m, 1, 5],
-    //     Generators =
-    //     [
-    //         IntervalScheduling.Exhaustive
-    //     ],
-    // }
+    new()
+    {
+        N = [5,10,15,20],
+        Alpha = [0.1m, 1, 5],
+        Generators =
+        [
+            IntervalScheduling.Exhaustive
+        ],
+    }
 }.ToArray();
 
 IntervalSchedulingTestHelper.RunTests(configs, currentDirectory);
