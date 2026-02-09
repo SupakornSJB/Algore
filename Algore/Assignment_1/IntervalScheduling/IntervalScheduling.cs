@@ -60,6 +60,10 @@ public static class IntervalScheduling
 
     private static List<Interval> Greedy(List<Interval> intervals, IComparer<Interval> comparer)
     {
+        // Use .NET Builtin sort, Time complexity O(nlogn), but has better optimization
+        // intervals.Sort(comparer);
+        
+        // Self-implemented merge sort
         SortImplementation.MergeSort(intervals, true, comparer);
         return IntervalSchedulingHelper.EnumerateValidIntervals(intervals);
     }

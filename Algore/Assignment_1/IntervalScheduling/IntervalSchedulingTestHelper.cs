@@ -12,6 +12,7 @@ public static class IntervalSchedulingTestHelper
 {
     private static int JobAmount = 0;
     private static int CurrentJobCount = 1;
+    private static int FailedJob = 0;
     
     public static void RunTests(
         IntervalSchedulingTestConfiguration[] configs, 
@@ -72,19 +73,33 @@ public static class IntervalSchedulingTestHelper
             var resultTimeForThisAlpha = new List<double>();
             foreach (var n in correctNPlots)
             {
-                Console.WriteLine($"Generating Test Set STARTED ({CurrentJobCount}/{JobAmount}) - Method: {generator.Method.Name}, Time: {TimeHelper.LogTime()}");
-                var testSet = IntervalSchedulingHelper.GenerateTestSet(n, alpha, intervalDuration);
-                Console.WriteLine($"Generating Test Set FINISHED ({CurrentJobCount}/{JobAmount}) - Method: {generator.Method.Name}, Time: {TimeHelper.LogTime()}");
+                try
+                {
+                    Console.WriteLine(
+                        $"Generating Test Set STARTED ({CurrentJobCount}/{JobAmount}) - Method: {generator.Method.Name}, Time: {TimeHelper.LogTime()}");
+                    var testSet = IntervalSchedulingHelper.GenerateTestSet(n, alpha, intervalDuration);
+                    Console.WriteLine(
+                        $"Generating Test Set FINISHED ({CurrentJobCount}/{JobAmount}) - Method: {generator.Method.Name}, Time: {TimeHelper.LogTime()}");
+
+                    Console.WriteLine(
+                        $"Running Algorithm STARTED ({CurrentJobCount}/{JobAmount}) - Method: {generator.Method.Name}, Time: {TimeHelper.LogTime()}");
+                    sw.Start();
+                    generator(testSet);
+                    sw.Stop();
+                    Console.WriteLine(
+                        $"Running Algorithm FINISHED ({CurrentJobCount}/{JobAmount}) - Method: {generator.Method.Name}, Time: {TimeHelper.LogTime()}");
                     
-                Console.WriteLine($"Running Algorithm STARTED ({CurrentJobCount}/{JobAmount}) - Method: {generator.Method.Name}, Time: {TimeHelper.LogTime()}");
-                sw.Start();
-                generator(testSet);
-                sw.Stop();
-                Console.WriteLine($"Running Algorithm FINISHED ({CurrentJobCount}/{JobAmount}) - Method: {generator.Method.Name}, Time: {TimeHelper.LogTime()}");
-                    
-                resultTimeForThisAlpha.Add(StopwatchHelper.GetPreciseElapsedTime(sw));
-                sw.Reset();
-                CurrentJobCount++;
+                    resultTimeForThisAlpha.Add(StopwatchHelper.GetPreciseElapsedTime(sw));
+                }
+                catch (Exception _)
+                {
+                    Console.WriteLine($"Running Algorithm FAILED ({CurrentJobCount}/{JobAmount}) - Method: {generator.Method.Name}, Time: {TimeHelper.LogTime()}, Number of failed job: {++FailedJob}");
+                }
+                finally
+                {
+                    sw.Reset();
+                    CurrentJobCount++;
+                }
             }
             correctAlphaPlots.Add(resultTimeForThisAlpha.Skip(1).ToList());
         }
@@ -92,8 +107,8 @@ public static class IntervalSchedulingTestHelper
         var plt = new Plot();
         var normalizedPlotMap = new Dictionary<string, Plot>();
         
-        plt.XLabel("t(n)");
-        plt.YLabel("n");
+        plt.XLabel("n");
+        plt.YLabel("t(n)");
         plt.Title($"Method: {generator.Method.Name}");
         plt.Legend.Alignment = Alignment.UpperRight;
         plt.ShowLegend();
@@ -110,8 +125,8 @@ public static class IntervalSchedulingTestHelper
                     normalizedPlotMap.TryAdd(normalizer.Method.Name, normalPlot);
                 }
                 
-                normalPlot.XLabel("t(n)");
-                normalPlot.YLabel("normalized n");
+                normalPlot.XLabel("normalized n");
+                normalPlot.YLabel("normalized t(n)");
                 normalPlot.Title($"Method: {generator.Method.Name}, normalized: {normalizer.Method.Name}");
                 normalPlot.Legend.Alignment = Alignment.UpperRight;
                 normalPlot.ShowLegend();

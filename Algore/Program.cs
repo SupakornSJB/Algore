@@ -9,7 +9,7 @@ var configs = new List<IntervalSchedulingTestConfiguration>
 {
     new() 
     {
-        N = Enumerable.Range(10, 15).Select(x => Pow(2,x)).ToArray(),
+        N = Enumerable.Range(10, 14).Select(x => Pow(2,x)).ToArray(),
         Alpha = [0.1m, 1, 5],
         Generators =
         [
@@ -24,7 +24,7 @@ var configs = new List<IntervalSchedulingTestConfiguration>
     },
     new()
     {
-        N = [5,10,15,20,25],
+        N = [5,10,15,20],
         Alpha = [0.1m, 1, 5],
         Generators =
         [
