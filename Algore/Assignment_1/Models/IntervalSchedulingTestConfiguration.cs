@@ -7,4 +7,5 @@ public class IntervalSchedulingTestConfiguration
     public required List<Func<List<Interval>, object>> Generators { get; set; } // - Different chart
     public decimal? IntervalDuration { get; set; }    
     public int? TrialsPerConfig { get; set; }
+    public List<Func<int , double, (double, double)>> Normalizers { get; set; }
 }
