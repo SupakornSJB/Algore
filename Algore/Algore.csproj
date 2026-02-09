@@ -11,4 +11,8 @@
       <PackageReference Include="ScottPlot" Version="5.1.57" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Folder Include="Assignment_1\Stats\" />
+    </ItemGroup>
+
 </Project>
