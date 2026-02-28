@@ -98,7 +98,7 @@ public class MergeSortImplementationTests
     }
     
     [Fact]
-    public void Sort_CaseInsensitiveComparer_SortsCorrectly()
+    public void MergeSort_CaseInsensitiveComparer_SortsCorrectly()
     {
         var list = new List<string> { "b", "A", "a", "B", "aa", "AA" };
 
