@@ -64,7 +64,7 @@ public static class IntervalScheduling
         // intervals.Sort(comparer);
         
         // Self-implemented merge sort
-        SortImplementation.MergeSort(intervals, true, comparer);
+        MergeSortImplementation.MergeSort(intervals, true, comparer);
         return IntervalSchedulingHelper.EnumerateValidIntervals(intervals);
     }
 }

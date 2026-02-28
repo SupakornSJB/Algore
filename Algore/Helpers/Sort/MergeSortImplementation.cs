@@ -1,6 +1,6 @@
 ﻿namespace Algore.Helpers.Sort;
 
-public static class SortImplementation
+public static class MergeSortImplementation
 {
     public static void MergeSort<T>(
         List<T> list, 
