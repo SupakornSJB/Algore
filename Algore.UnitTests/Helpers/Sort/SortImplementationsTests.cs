@@ -5,10 +5,10 @@ namespace Algore.UnitTests.Helpers.Sort;
 
 public class SortImplementationsTests 
 {
-    public class CustomTypeSorter : IComparable<CustomTypeSorter>
+    public class CustomTypeSortable : IComparable<CustomTypeSortable>
     {
         public int Value { get; set; }
-        public int CompareTo(CustomTypeSorter? other)
+        public int CompareTo(CustomTypeSortable? other)
         {
             return Value.CompareTo(other?.Value ?? 0);
         }
@@ -16,9 +16,9 @@ public class SortImplementationsTests
 
     public static IEnumerable<object[]> CustomTypeSorters =>
     [
-        new object[] { "QuickSort", (Action<List<CustomTypeSorter>, bool, IComparer<CustomTypeSorter>?>)QuickSortImplementation.Sort },
-        new object[] { "MergeSort", (Action<List<CustomTypeSorter>, bool, IComparer<CustomTypeSorter>?>)MergeSortImplementation.Sort },
-        new object[] { "HeapSort",  (Action<List<CustomTypeSorter>, bool, IComparer<CustomTypeSorter>?>)HeapSortImplementation.Sort },
+        new object[] { "QuickSort", (Action<List<CustomTypeSortable>, bool, IComparer<CustomTypeSortable>?>)QuickSortImplementation.Sort },
+        new object[] { "MergeSort", (Action<List<CustomTypeSortable>, bool, IComparer<CustomTypeSortable>?>)MergeSortImplementation.Sort },
+        new object[] { "HeapSort",  (Action<List<CustomTypeSortable>, bool, IComparer<CustomTypeSortable>?>)HeapSortImplementation.Sort },
     ];
     
     public static IEnumerable<object[]> Sorters =>
@@ -121,9 +121,9 @@ public class SortImplementationsTests
     [MemberData(nameof(CustomTypeSorters))]
     public void Sort_CustomType_Ascending_SortsCorrectly(
         string _,
-        Action<List<CustomTypeSorter>, bool, IComparer<CustomTypeSorter>?> sort)
+        Action<List<CustomTypeSortable>, bool, IComparer<CustomTypeSortable>?> sort)
     {
-        var list = new List<CustomTypeSorter>
+        var list = new List<CustomTypeSortable>
         {
             new() { Value = 5 },
             new() { Value = 1 },
@@ -143,9 +143,9 @@ public class SortImplementationsTests
     [MemberData(nameof(CustomTypeSorters))]
     public void Sort_CustomType_Descending_SortsCorrectly(
         string _,
-        Action<List<CustomTypeSorter>, bool, IComparer<CustomTypeSorter>?> sort)
+        Action<List<CustomTypeSortable>, bool, IComparer<CustomTypeSortable>?> sort)
     {
-        var list = new List<CustomTypeSorter>
+        var list = new List<CustomTypeSortable>
         {
             new() { Value = 5 },
             new() { Value = 1 },
