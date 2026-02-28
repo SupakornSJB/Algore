@@ -4,15 +4,14 @@ using Algore.Helpers.Normalizers;
 using Algore.Helpers.Sort;
 using Algore.Helpers.TestSet;
 
-void TestQuickSort()
-{
-    var randomNumbers = IntegerTestSetGeneratorHelper.GenerateRandomNumbers(100, 0, 100);
-    Console.WriteLine("Before: " + string.Join(",", randomNumbers));
-    QuickSortImplementation.QuickSort(randomNumbers);
-    Console.WriteLine("After: " + string.Join(",", randomNumbers));
-}
+// Uncomment to test
+// TestInvervalScheduling();
+TestQuickSort();
+TestHeapSort();
+TestMergeSort();
+return;
 
-void TestInvervalScheduling()
+void TestIntervalScheduling()
 {
     int Pow(int x, int y) => (int)Math.Pow(x, y);
     var currentDirectory = Directory.GetCurrentDirectory();
@@ -51,6 +50,26 @@ void TestInvervalScheduling()
     IntervalSchedulingTestHelper.RunTests(configs, currentDirectory);
 }
 
-// Uncomment to test
-// TestInvervalScheduling();
-// TestQuickSort();
+void TestHeapSort()
+{
+    var randomNumbers = IntegerTestSetGeneratorHelper.GenerateRandomNumbers(100, 0, 100);
+    Console.WriteLine("Heap sort (Before): " + string.Join(",", randomNumbers));
+    HeapSortImplementation.Sort(randomNumbers);
+    Console.WriteLine("Heap sort (After): " + string.Join(",", randomNumbers));
+}
+
+void TestQuickSort()
+{
+    var randomNumbers = IntegerTestSetGeneratorHelper.GenerateRandomNumbers(100, 0, 100);
+    Console.WriteLine("Quick sort (Before): " + string.Join(",", randomNumbers));
+    QuickSortImplementation.Sort(randomNumbers);
+    Console.WriteLine("Quick sort (After): " + string.Join(",", randomNumbers));
+}
+
+void TestMergeSort()
+{
+    var randomNumbers = IntegerTestSetGeneratorHelper.GenerateRandomNumbers(100, 0, 100);
+    Console.WriteLine("Merge sort (Before): " + string.Join(",", randomNumbers));
+    MergeSortImplementation.Sort(randomNumbers);
+    Console.WriteLine("Merge sort (After): " + string.Join(",", randomNumbers));
+}

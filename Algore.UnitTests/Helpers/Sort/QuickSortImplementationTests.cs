@@ -10,7 +10,7 @@ public class QuickSortImplementationTests
     {
         var list = new List<int>();
 
-        QuickSortImplementation.QuickSort(list, acs: true);
+        QuickSortImplementation.Sort(list, acs: true);
 
         Assert.Empty(list);
     }
@@ -20,7 +20,7 @@ public class QuickSortImplementationTests
     {
         var list = new List<int> { 42 };
 
-        QuickSortImplementation.QuickSort(list, acs: true);
+        QuickSortImplementation.Sort(list, acs: true);
 
         Assert.Equal(new List<int> { 42 }, list);
     }
@@ -30,7 +30,7 @@ public class QuickSortImplementationTests
     {
         var list = new List<int> { 5, 1, 4, 2, 8, 0, -3 };
 
-        QuickSortImplementation.QuickSort(list, acs: true);
+        QuickSortImplementation.Sort(list, acs: true);
 
         Assert.Equal(new List<int> { -3, 0, 1, 2, 4, 5, 8 }, list);
     }
@@ -40,7 +40,7 @@ public class QuickSortImplementationTests
     {
         var list = new List<int> { 5, 1, 4, 2, 8, 0, -3 };
 
-        QuickSortImplementation.QuickSort(list, acs: false);
+        QuickSortImplementation.Sort(list, acs: false);
 
         Assert.Equal(new List<int> { 8, 5, 4, 2, 1, 0, -3 }, list);
     }
@@ -50,7 +50,7 @@ public class QuickSortImplementationTests
     {
         var list = new List<int> { 3, 1, 2, 3, 2, 1, 3 };
 
-        QuickSortImplementation.QuickSort(list, acs: true);
+        QuickSortImplementation.Sort(list, acs: true);
 
         Assert.Equal(new List<int> { 1, 1, 2, 2, 3, 3, 3 }, list);
     }
@@ -60,7 +60,7 @@ public class QuickSortImplementationTests
     {
         var list = new List<int> { -2, -1, 0, 3, 3, 10 };
 
-        QuickSortImplementation.QuickSort(list, acs: true);
+        QuickSortImplementation.Sort(list, acs: true);
 
         Assert.Equal(new List<int> { -2, -1, 0, 3, 3, 10 }, list);
     }
@@ -70,7 +70,7 @@ public class QuickSortImplementationTests
     {
         var list = new List<string> { "delta", "alpha", "charlie", "bravo" };
 
-        QuickSortImplementation.QuickSort(list, acs: true);
+        QuickSortImplementation.Sort(list, acs: true);
 
         Assert.Equal(new List<string> { "alpha", "bravo", "charlie", "delta" }, list);
     }

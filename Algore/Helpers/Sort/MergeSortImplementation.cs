@@ -1,10 +1,12 @@
-﻿namespace Algore.Helpers.Sort;
+﻿using Algore.Interfaces;
 
-public static class MergeSortImplementation
+namespace Algore.Helpers.Sort;
+
+public abstract class MergeSortImplementation : ISortImplementation
 {
-    public static void MergeSort<T>(
+    public static void Sort<T>(
         List<T> list, 
-        bool asc,
+        bool asc = true,
         IComparer<T>? comparer = null) where T : IComparable
     {
         var temp = new T[list.Count];
