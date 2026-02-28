@@ -7,7 +7,7 @@ public abstract class HeapSortImplementation : ISortImplementation
     public static void Sort<T>(
         List<T> list, 
         bool asc = true,
-        IComparer<T>? comparer = null) where T : IComparable
+        IComparer<T>? comparer = null) where T : IComparable<T>
     {
         BuildHeap(list, asc, comparer);
         for (var i = list.Count - 1; i > 0; i--)
@@ -22,7 +22,7 @@ public abstract class HeapSortImplementation : ISortImplementation
         int rootIndex, 
         int untilIndex, 
         bool isMax,
-        IComparer<T>? comparer = null) where T : IComparable
+        IComparer<T>? comparer = null) where T : IComparable<T>
     {
         var leftIndex = 2 * rootIndex + 1;
         var rightIndex = 2 * rootIndex + 2;
@@ -58,7 +58,7 @@ public abstract class HeapSortImplementation : ISortImplementation
     private static void BuildHeap<T>(
         List<T> list, 
         bool isMax, 
-        IComparer<T>? comparer = null) where T : IComparable
+        IComparer<T>? comparer = null) where T : IComparable<T>
     {
         var starting = (list.Count / 2) - 1; 
         for (var i = starting; i >= 0; i--)

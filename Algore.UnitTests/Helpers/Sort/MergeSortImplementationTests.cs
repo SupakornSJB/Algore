@@ -5,9 +5,9 @@ namespace Algore.UnitTests.Helpers.Sort;
 
 public class MergeSortImplementationTests
 {
-    private sealed record Item(string Key, int OriginalIndex) : IComparable
+    private sealed record Item(string Key, int OriginalIndex) : IComparable<Item>
     {
-        public int CompareTo(object? obj)
+        public int CompareTo(Item? other)
         {
             throw new NotImplementedException();
         }

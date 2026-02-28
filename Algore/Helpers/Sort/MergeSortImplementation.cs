@@ -7,7 +7,7 @@ public abstract class MergeSortImplementation : ISortImplementation
     public static void Sort<T>(
         List<T> list, 
         bool asc = true,
-        IComparer<T>? comparer = null) where T : IComparable
+        IComparer<T>? comparer = null) where T : IComparable<T>
     {
         var temp = new T[list.Count];
         MergeSortImpl(list, temp, 0, list.Count - 1, asc, comparer);
@@ -19,7 +19,7 @@ public abstract class MergeSortImplementation : ISortImplementation
         int left, 
         int right, 
         bool asc,
-        IComparer<T>? comparer = null) where T : IComparable
+        IComparer<T>? comparer = null) where T : IComparable<T>
     {
         if (left >= right)
         {
@@ -40,7 +40,7 @@ public abstract class MergeSortImplementation : ISortImplementation
         int mid, 
         int right, 
         bool asc,
-        IComparer<T>? comparer = null) where T : IComparable
+        IComparer<T>? comparer = null) where T : IComparable<T>
     {
         var i = left;
         var j = mid + 1;

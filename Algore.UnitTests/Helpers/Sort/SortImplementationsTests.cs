@@ -5,6 +5,22 @@ namespace Algore.UnitTests.Helpers.Sort;
 
 public class SortImplementationsTests 
 {
+    public class CustomTypeSorter : IComparable<CustomTypeSorter>
+    {
+        public int Value { get; set; }
+        public int CompareTo(CustomTypeSorter? other)
+        {
+            return Value.CompareTo(other?.Value ?? 0);
+        }
+    }
+
+    public static IEnumerable<object[]> CustomTypeSorters =>
+    [
+        new object[] { "QuickSort", (Action<List<CustomTypeSorter>, bool, IComparer<CustomTypeSorter>?>)QuickSortImplementation.Sort },
+        new object[] { "MergeSort", (Action<List<CustomTypeSorter>, bool, IComparer<CustomTypeSorter>?>)MergeSortImplementation.Sort },
+        new object[] { "HeapSort",  (Action<List<CustomTypeSorter>, bool, IComparer<CustomTypeSorter>?>)HeapSortImplementation.Sort },
+    ];
+    
     public static IEnumerable<object[]> Sorters =>
     [
         new object[] { "QuickSort", (Action<List<int>, bool, IComparer<int>?>)QuickSortImplementation.Sort },
@@ -99,5 +115,49 @@ public class SortImplementationsTests
         sort(list, true, lengthComparer);
 
         Assert.Equal(new List<string> { "", "b", "dd", "ccc", "aaaa" }, list);
+    }
+    
+    [Theory]
+    [MemberData(nameof(CustomTypeSorters))]
+    public void Sort_CustomType_Ascending_SortsCorrectly(
+        string _,
+        Action<List<CustomTypeSorter>, bool, IComparer<CustomTypeSorter>?> sort)
+    {
+        var list = new List<CustomTypeSorter>
+        {
+            new() { Value = 5 },
+            new() { Value = 1 },
+            new() { Value = 4 },
+            new() { Value = 2 },
+            new() { Value = 8 },
+            new() { Value = 0 },
+            new() { Value = -3 },
+        };
+
+        sort(list, true, null);
+
+        Assert.Equal(new List<int> { -3, 0, 1, 2, 4, 5, 8 }, list.Select(x => x.Value).ToList());
+    }
+
+    [Theory]
+    [MemberData(nameof(CustomTypeSorters))]
+    public void Sort_CustomType_Descending_SortsCorrectly(
+        string _,
+        Action<List<CustomTypeSorter>, bool, IComparer<CustomTypeSorter>?> sort)
+    {
+        var list = new List<CustomTypeSorter>
+        {
+            new() { Value = 5 },
+            new() { Value = 1 },
+            new() { Value = 4 },
+            new() { Value = 2 },
+            new() { Value = 8 },
+            new() { Value = 0 },
+            new() { Value = -3 },
+        };
+
+        sort(list, false, null);
+
+        Assert.Equal(new List<int> { 8, 5, 4, 2, 1, 0, -3 }, list.Select(x => x.Value).ToList());
     }
 }

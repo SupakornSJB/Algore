@@ -7,7 +7,7 @@ public abstract class QuickSortImplementation : ISortImplementation
     public static void Sort<T>(
         List<T> list, 
         bool acs = true, 
-        IComparer<T>? comparer = null) where T : IComparable
+        IComparer<T>? comparer = null) where T : IComparable<T>
     {
         QuickSortImpl(list, 0, list.Count - 1, acs, comparer);
     }
@@ -17,7 +17,7 @@ public abstract class QuickSortImplementation : ISortImplementation
         int left, 
         int right, 
         bool asc, 
-        IComparer<T>? comparer = null) where T : IComparable
+        IComparer<T>? comparer = null) where T : IComparable<T>
     {
         if (left >= right) return;
         
@@ -31,7 +31,7 @@ public abstract class QuickSortImplementation : ISortImplementation
         int left, 
         int right, 
         bool asc, 
-        IComparer<T>? comparer = null) where T : IComparable
+        IComparer<T>? comparer = null) where T : IComparable<T>
     {
         if (left >= right) return left;
         var i = left - 1;
