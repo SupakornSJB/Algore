@@ -3,12 +3,14 @@ using Algore.Assignment_1.Models;
 using Algore.Helpers.Normalizers;
 using Algore.Helpers.Sort;
 using Algore.Helpers.TestSet;
+using Algore.Helpers.Tree;
 
 // Uncomment to test
 // TestInvervalScheduling();
-TestQuickSort();
-TestHeapSort();
-TestMergeSort();
+// TestQuickSort();
+// TestHeapSort();
+// TestMergeSort();
+TestBST();
 return;
 
 void TestIntervalScheduling()
@@ -72,4 +74,21 @@ void TestMergeSort()
     Console.WriteLine("Merge sort (Before): " + string.Join(",", randomNumbers));
     MergeSortImplementation.Sort(randomNumbers);
     Console.WriteLine("Merge sort (After): " + string.Join(",", randomNumbers));
+}
+
+void TestBST()
+{
+    var bst = new BinarySearchTree<int, int>((i => i));
+    var numList = new List<int> {2, 5, 3, 9, 10, 1, 8, 7, 4, 6};
+    foreach (var num in numList)
+    {
+        Console.WriteLine("Inserting: " + num);
+        bst.Insert(num);
+    }
+
+    foreach (var num in numList)
+    {
+        var result = bst.Search(num);
+        Console.WriteLine("Searching for: " + num + " - Result: " + result);
+    }
 }
