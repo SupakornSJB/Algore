@@ -1,6 +1,6 @@
 ﻿using Algore.Interfaces;
 
-namespace Algore.Helpers.Sort;
+namespace Algore.Algorithms.Sort;
 
 public abstract class HeapSortImplementation : ISortImplementation
 {

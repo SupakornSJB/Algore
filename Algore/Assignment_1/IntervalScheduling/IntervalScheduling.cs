@@ -1,6 +1,6 @@
-﻿using Algore.Assignment_1.Models;
+﻿using Algore.Algorithms.Sort;
+using Algore.Assignment_1.Models;
 using Algore.Helpers.Combination;
-using Algore.Helpers.Sort;
 
 namespace Algore.Assignment_1.IntervalScheduling;
 

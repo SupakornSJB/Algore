@@ -12,7 +12,20 @@
     </ItemGroup>
 
     <ItemGroup>
+      <Folder Include="Algorithms\" />
       <Folder Include="Assignment_1\Stats\" />
+      <Folder Include="DataStructures\" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Content Remove="ShortestDuration_25690209185322.json" />
+      <Content Remove="Exhaustive_25690209185322.json" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <None Remove="Exhaustive_25690209185322_N2Normalizer.png" />
+      <None Remove="Exhaustive_25690209185322.png" />
+      <None Remove="EarliestStartTime_25690209185322_NLogNNormalizer.png" />
     </ItemGroup>
 
 </Project>

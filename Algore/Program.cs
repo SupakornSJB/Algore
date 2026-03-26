@@ -1,9 +1,10 @@
+using Algore.Algorithms.Sort;
 using Algore.Assignment_1.IntervalScheduling;
 using Algore.Assignment_1.Models;
+using Algore.DataStructures.Tree;
+using Algore.DataStructures.Tree.Implementations;
 using Algore.Helpers.Normalizers;
-using Algore.Helpers.Sort;
 using Algore.Helpers.TestSet;
-using Algore.Helpers.Tree;
 
 // Uncomment to test
 // TestInvervalScheduling();

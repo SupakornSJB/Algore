@@ -1,7 +1,7 @@
-﻿using Algore.Helpers.Sort;
+﻿using Algore.Algorithms.Sort;
 using Xunit;
 
-namespace Algore.UnitTests.Helpers.Sort;
+namespace Algore.UnitTests.Algorithms.Sort;
 
 public class SortImplementationsTests 
 {

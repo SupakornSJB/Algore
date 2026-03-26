@@ -1,7 +1,8 @@
-using Algore.Helpers.Tree;
+using Algore.DataStructures.Tree;
+using Algore.DataStructures.Tree.Implementations;
 using Xunit;
 
-namespace Algore.UnitTests.Helpers.Tree;
+namespace Algore.UnitTests.DataStructures.Tree;
 
 public class BinarySearchTreeTests
 {
@@ -14,7 +15,7 @@ public class BinarySearchTreeTests
 
         var result = bst.Search(10);
 
-        Assert.Equal(default, result);
+        Assert.Equal(0, result);
     }
 
     [Fact]
@@ -69,7 +70,7 @@ public class BinarySearchTreeTests
 
         var result = bst.Search(9);
 
-        Assert.Equal(default, result);
+        Assert.Equal(0, result);
     }
 
     [Fact]
@@ -111,5 +112,51 @@ public class BinarySearchTreeTests
         var result = bst.Search(1, p => p.Id);
 
         Assert.Equal(bob, result);
+    }
+    
+    [Fact]
+    public void GetHeight_EmptyBst_ReturnsMinusOne()
+    {
+        var bst = new BinarySearchTree<int, int>(i => i);
+
+        Assert.Equal(-1, bst.Height);
+    }
+
+    [Fact]
+    public void GetHeight_SingleNodeBst_ReturnsZero()
+    {
+        var bst = new BinarySearchTree<int, int>(i => i);
+        bst.Insert(10);
+
+        Assert.Equal(0, bst.Height);
+    }
+
+    [Fact]
+    public void GetHeight_SkewedBst_ReturnsExpectedHeight()
+    {
+        var bst = new BinarySearchTree<int, int>(i => i);
+
+        bst.Insert(10);
+        bst.Insert(20);
+        bst.Insert(30);
+        bst.Insert(40);
+
+        Assert.Equal(3, bst.Height);
+    }
+
+    [Fact]
+    public void GetHeight_BalancedBst_ReturnsExpectedHeight()
+    {
+        var bst = new BinarySearchTree<int, int>(i => i);
+
+        bst.Insert(10);
+        bst.Insert(5);
+        bst.Insert(15);
+        bst.Insert(2);
+        bst.Insert(7);
+        bst.Insert(12);
+        bst.Insert(20);
+
+        Assert.Equal(2, bst.Height);
     }
 }
