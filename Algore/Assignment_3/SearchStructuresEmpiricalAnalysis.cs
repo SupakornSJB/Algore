@@ -2,7 +2,7 @@ using System.Diagnostics;
 using Algore.DataStructures.HashTable;
 using Algore.DataStructures.Tree.Implementations;
 
-namespace Algore.Assignment_2;
+namespace Algore.Assignment_3;
 
 public static class SearchStructuresEmpiricalAnalysis
 {
